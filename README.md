@@ -1,2 +1,1 @@
-# Huijskens.daniel-gmail.com
-Distribution Bots 2.0
+#Distribution Bots 2.0
