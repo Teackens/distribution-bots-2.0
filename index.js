@@ -1,11 +1,7 @@
-const BOTSAMOUNT = 4;
-const GRIDSIZE = 4;
-
-let bots = [];
-let grid;
+let country;
 
 function setup() {
-  grid = new Grid(GRIDSIZE, GRIDSIZE);
+  country = new Country();
 }
 
 function draw() {}
