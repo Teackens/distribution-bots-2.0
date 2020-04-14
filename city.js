@@ -1,6 +1,7 @@
 class City {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
+  constructor(name) {
+    // this.x = x;
+    // this.y = y;
+    this.name = name;
   }
 }
