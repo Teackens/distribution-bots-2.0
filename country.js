@@ -9,14 +9,14 @@ class Country {
     let Rotterdam = new City("Rotterdam");
 
     this.graph = this.buildGraphFromEdges([
-      { source: Nijmegen, target: Amsterdam, weight: 10 },
-      { source: Amsterdam, target: Groningen, weight: 5 },
-      { source: Amsterdam, target: Utrecht, weight: 12 },
-      { source: Amsterdam, target: Rotterdam, weight: 7 },
-      { source: Groningen, target: Rotterdam, weight: 19 },
-      { source: Utrecht, target: Leeuwarden, weight: 2 },
-      { source: Utrecht, target: Rotterdam, weight: 3 },
-      { source: Rotterdam, target: Leeuwarden, weight: 22 }
+      { startCity: Nijmegen, targetCity: Amsterdam, weight: 10 },
+      { startCity: Amsterdam, targetCity: Groningen, weight: 5 },
+      { startCity: Amsterdam, targetCity: Utrecht, weight: 12 },
+      { startCity: Amsterdam, targetCity: Rotterdam, weight: 7 },
+      { startCity: Groningen, targetCity: Rotterdam, weight: 19 },
+      { startCity: Utrecht, targetCity: Leeuwarden, weight: 2 },
+      { startCity: Utrecht, targetCity: Rotterdam, weight: 3 },
+      { startCity: Rotterdam, targetCity: Leeuwarden, weight: 22 },
     ]);
     console.log("completed graph");
     console.log(this.graph);
@@ -26,17 +26,17 @@ class Country {
     console.log(this.graph);
   }
 
-  buildGraphFromEdges = edges => {
-    edges.reduce((graph, { source, target }) => {
-      if (!graph.has(source)) {
-        this.addNode(graph, source);
+  buildGraphFromEdges = (edges) => {
+    edges.reduce((graph, { startCity, targetCity }) => {
+      if (!graph.has(startCity)) {
+        this.addNode(graph, startCity);
       }
 
-      if (!graph.has(target)) {
-        this.addNode(graph, target);
+      if (!graph.has(targetCity)) {
+        this.addNode(graph, targetCity);
       }
 
-      this.connectNodes(graph, source, target);
+      this.connectNodes(graph, startCity, targetCity);
       return graph;
     }, new Map());
     return edges;
@@ -46,8 +46,8 @@ class Country {
     graph.set(node, { in: new Set(), out: new Set() });
   };
 
-  connectNodes = (graph, source, target) => {
-    graph.get(source).out.add(target);
-    graph.get(target).in.add(source);
+  connectNodes = (graph, startCity, targetCity) => {
+    graph.get(startCity).out.add(targetCity);
+    graph.get(targetCity).in.add(startCity);
   };
 }
