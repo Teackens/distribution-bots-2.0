@@ -9,6 +9,7 @@ class Country {
     let Rotterdam = new City("Rotterdam");
 
     this.graph = this.buildGraphFromEdges([
+
       { startCity: Nijmegen, targetCity: Amsterdam, weight: 10 },
       { startCity: Amsterdam, targetCity: Groningen, weight: 5 },
       { startCity: Amsterdam, targetCity: Utrecht, weight: 12 },
@@ -37,6 +38,7 @@ class Country {
       }
 
       this.connectNodes(graph, startCity, targetCity);
+
       return graph;
     }, new Map());
     return edges;
@@ -49,5 +51,6 @@ class Country {
   connectNodes = (graph, startCity, targetCity) => {
     graph.get(startCity).out.add(targetCity);
     graph.get(targetCity).in.add(startCity);
+
   };
 }
